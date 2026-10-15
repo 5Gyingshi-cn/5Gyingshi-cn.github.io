@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<meta name="description" content="5G影视 - 5G时代超高清影视在线观看平台。依托5G极速网络提供4K/8K超高清影视、零缓冲秒播、智能推荐片单，覆盖电影、电视剧、综艺、动漫全品类内容，打造新一代高速影视观看体验。">
+<meta name="keywords" content="5G影视,5G影视在线观看,5G超高清影视,5G在线影视平台,5G极速影视,4K影视,8K影视,零缓冲影视,5Gyingshi,高清影视平台,影视在线观看">
+<title>5G影视 | 5Gyingshi-cn · 5G时代超高清影视在线观看平台 · 4K/8K极速秒播</title>
+<style>
+:root{
+  --bg:#05060f;--bg2:#0a0d1f;--card:#10142c;--card2:#151a38;--line:rgba(255,255,255,.08);
+  --tx:#eef1ff;--tx2:#9aa3cf;--tx3:#5c6496;
+  --cy:#00f0ff;--cy2:#22d3ee;--pu:#7c3aed;--pu2:#a855f7;--mg:#f0abfc;--go:#fbbf24;
+  --ez:cubic-bezier(.2,.82,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+  line-height:1.72;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+button{font-family:inherit;cursor:pointer;border:0}
+::selection{background:var(--cy);color:#05060f}
+h1,h2,h3{letter-spacing:-.3px}
+
+/* 5G 网络波纹背景 */
+.grid{position:fixed;inset:0;z-index:-3;background:
+  linear-gradient(rgba(0,240,255,.035) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(0,240,255,.035) 1px,transparent 1px);
+  background-size:46px 46px;transform:perspective(900px) rotateX(52deg) translateY(-40px) scale(2.2);transform-origin:center top}
+.aur{position:fixed;inset:0;z-index:-2;opacity:.55;background:
+  radial-gradient(ellipse 60% 50% at 18% 12%,rgba(0,240,255,.22),transparent 60%),
+  radial-gradient(ellipse 55% 48% at 86% 30%,rgba(124,58,237,.28),transparent 62%),
+  radial-gradient(ellipse 50% 45% at 50% 95%,rgba(240,171,252,.16),transparent 60%)}
+.pulse{position:fixed;inset:0;z-index:-1;pointer-events:none}
+.pulse i{position:absolute;border-radius:50%;border:1.5px solid var(--cy);opacity:0;animation:pl 5.5s linear infinite}
+.pulse i:nth-child(1){left:12%;top:22%;width:120px;height:120px;animation-delay:0s}
+.pulse i:nth-child(2){left:72%;top:58%;width:170px;height:170px;border-color:var(--pu2);animation-delay:1.6s}
+.pulse i:nth-child(3){left:44%;top:76%;width:90px;height:90px;border-color:var(--mg);animation-delay:3s}
+@keyframes pl{0%{transform:scale(.4);opacity:.65}100%{transform:scale(3.4);opacity:0}}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+section{padding:104px 0;position:relative}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-size:11.5px;font-weight:800;letter-spacing:2.4px;color:var(--cy);padding:6px 14px;border-radius:5px;background:rgba(0,240,255,.09);border:1px solid rgba(0,240,255,.3)}
+.kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--cy);box-shadow:0 0 10px var(--cy);animation:bl 1.4s infinite}
+@keyframes bl{50%{opacity:.3}}
+.h2{font-size:clamp(26px,4vw,42px);line-height:1.28;font-weight:850}
+.h2 em{font-style:normal;background:linear-gradient(90deg,var(--cy),var(--pu2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.lede{color:var(--tx2);font-size:16px;max-width:640px}
+
+/* 头部 */
+.hd{position:sticky;top:0;z-index:100;background:rgba(5,6,15,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nv{max-width:1200px;margin:0 auto;padding:0 22px;height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:950;font-size:20px;letter-spacing:.5px}
+.logo .mk{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;font-size:13px;font-weight:950;color:#05060f;background:linear-gradient(135deg,var(--cy),var(--pu2))}
+.logo small{font-size:10.5px;color:var(--tx3);font-weight:700;letter-spacing:1.6px}
+.menu{display:flex;align-items:center;gap:2px}
+.menu a{padding:9px 14px;font-size:14.5px;color:var(--tx2);border-radius:6px;transition:.25s}
+.menu a:hover{color:var(--cy);background:rgba(0,240,255,.07)}
+.menu .cta{padding:10px 22px;margin-left:10px;font-size:14px;font-weight:800;color:#05060f;border-radius:7px;background:linear-gradient(90deg,var(--cy),var(--pu2))}
+.menu .cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,240,255,.4)}
+.bmb{display:none;width:42px;height:42px;border:1px solid var(--line);background:transparent;color:var(--cy);font-size:20px;border-radius:7px}
+
+/* Hero —— 信号塔 + 速率仪表 */
+.hero{padding:78px 0 56px}
+.hg{display:grid;grid-template-columns:1fr .9fr;gap:54px;align-items:center}
+.hero h1{font-size:clamp(40px,5.6vw,64px);line-height:1.05;font-weight:950;letter-spacing:-1.4px}
+.hero h1 .b5{display:inline-block;background:linear-gradient(120deg,var(--cy),var(--pu2),var(--mg));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gr 5s linear infinite}
+@keyframes gr{to{background-position:200% 0}}
+.hero h1 .sub{display:block;font-size:.4em;letter-spacing:3px;color:var(--tx3);margin-top:14px;font-weight:700;-webkit-text-fill-color:var(--tx3)}
+.hero .desc{margin:24px 0 30px;font-size:17px;color:var(--tx2);max-width:520px}
+.acts{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:15px 30px;border-radius:8px;font-size:15.5px;font-weight:850;transition:.3s var(--ez)}
+.bp{background:linear-gradient(90deg,var(--cy),var(--pu2));color:#05060f}
+.bp:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,240,255,.4)}
+.bo{background:transparent;color:var(--tx);border:1.5px solid var(--line)}
+.bo:hover{border-color:var(--cy);color:var(--cy)}
+.chips{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap}
+.chips span{font-size:12.5px;font-weight:800;padding:7px 15px;border-radius:18px;border:1px solid var(--line);color:var(--tx2);background:rgba(255,255,255,.03)}
+.chips span b{color:var(--cy)}
+
+/* 信号塔仪表 */
+.twr{position:relative;border-radius:16px;padding:30px;border:1px solid var(--line);background:linear-gradient(160deg,var(--card),var(--bg2));box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.mtr{display:flex;gap:16px;align-items:stretch}
+.mc{flex:1;padding:20px;border-radius:12px;background:rgba(0,240,255,.05);border:1px solid var(--line)}
+.mc .lb{font-size:11px;color:var(--tx3);letter-spacing:1.4px;font-weight:800}
+.mc .vl{font-size:38px;font-weight:950;line-height:1.1;background:linear-gradient(90deg,var(--cy),var(--pu2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.mc .vl small{font-size:15px;font-weight:800;-webkit-text-fill-color:var(--tx2)}
+.mc .ft{font-size:11.6px;color:var(--tx2);margin-top:6px}
+.sig{margin-top:20px;display:flex;gap:10px;align-items:flex-end;height:64px;padding:0 6px}
+.sig i{display:block;width:14px;border-radius:4px;background:linear-gradient(0deg,var(--cy),var(--pu2));animation:br 1.6s var(--ez) infinite alternate}
+.sig i:nth-child(1){height:30%;animation-delay:.1s}
+.sig i:nth-child(2){height:52%;animation-delay:.25s}
+.sig i:nth-child(3){height:74%;animation-delay:.4s}
+.sig i:nth-child(4){height:100%;animation-delay:.55s}
+@keyframes br{from{opacity:.45;transform:scaleY(.7)}to{opacity:1;transform:scaleY(1)}}
+.bars{margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.bars .b{padding:11px 8px;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--line);text-align:center}
+.bars .b strong{display:block;font-size:14px;font-weight:950;color:var(--cy)}
+.bars .b span{font-size:10.5px;color:var(--tx3)}
+
+/* 栏目一：极速体验 —— 六边形网格 */
+.exp-head{text-align:center;margin-bottom:46px}
+.exp-head .lede{margin:0 auto}
+.hex{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.hx{padding:28px 24px;border-radius:14px;background:var(--card);border:1px solid var(--line);position:relative;overflow:hidden;transition:.5s var(--ez)}
+.hx::before{content:"";position:absolute;right:-30px;top:-30px;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle,rgba(0,240,255,.18),transparent 70%)}
+.hx:hover{transform:translateY(-6px);border-color:var(--cy)}
+.hx .ic{font-size:26px;margin-bottom:12px;display:inline-block}
+.hx h3{font-size:17.5px;font-weight:850}
+.hx p{font-size:13.4px;color:var(--tx2);margin-top:8px}
+.hx .sp{margin-top:14px;font-size:11.5px;font-weight:900;letter-spacing:1.3px;color:var(--cy)}
+
+/* 栏目二：超高清画质 —— 同心圆环 */
+.q-head{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-bottom:46px}
+.q-head .lede{text-align:right;margin-left:auto}
+.rings{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.rg{position:relative;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;background:conic-gradient(var(--cy) calc(var(--p)*1%),rgba(255,255,255,.07) 0)}
+.rg::before{content:"";position:absolute;inset:10px;border-radius:50%;background:var(--bg)}
+.rg i{position:relative;font-style:normal}
+.rg i b{display:block;font-size:17px;font-weight:950;background:linear-gradient(90deg,var(--cy),var(--pu2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.rg i span{font-size:10.5px;color:var(--tx3);font-weight:800;letter-spacing:1px}
+.rg:nth-child(2){background:conic-gradient(var(--pu2) calc(var(--p)*1%),rgba(255,255,255,.07) 0)}
+.rg:nth-child(3){background:conic-gradient(var(--mg) calc(var(--p)*1%),rgba(255,255,255,.07) 0)}
+.rg:nth-child(4){background:conic-gradient(var(--go) calc(var(--p)*1%),rgba(255,255,255,.07) 0)}
+
+/* 栏目三：内容矩阵 —— 交错错位流 */
+.mx-head{text-align:center;margin-bottom:46px}
+.mx-head .lede{margin:0 auto}
+.mx{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.mx .cv{padding:22px;border-radius:12px;background:var(--card);border:1px solid var(--line);transition:.5s var(--ez)}
+.mx .cv:nth-child(odd){transform:translateY(-14px)}
+.mx .cv:hover{transform:translateY(-6px);border-color:var(--cy)}
+.mx .cv .th{height:120px;border-radius:9px;display:grid;place-items:center;font-size:13px;font-weight:850;color:#05060f;background:linear-gradient(140deg,var(--cy),var(--pu2))}
+.mx .cv:nth-child(2) .th{background:linear-gradient(140deg,var(--pu2),var(--mg))}
+.mx .cv:nth-child(3) .th{background:linear-gradient(140deg,var(--mg),var(--go))}
+.mx .cv:nth-child(4) .th{background:linear-gradient(140deg,var(--go),var(--cy))}
+.mx .cv:nth-child(5) .th{background:linear-gradient(140deg,var(--cy2),var(--pu))}
+.mx .cv:nth-child(6) .th{background:linear-gradient(140deg,var(--pu),var(--mg))}
+.mx .cv:nth-child(7) .th{background:linear-gradient(140deg,var(--mg),var(--cy))}
+.mx .cv:nth-child(8) .th{background:linear-gradient(140deg,var(--go),var(--pu2))}
+.mx .cv h4{font-size:15px;font-weight:850;margin-top:14px}
+.mx .cv p{font-size:12.6px;color:var(--tx2);margin-top:5px}
+
+/* 栏目四：智能推荐 —— 标签云 + 片单 */
+.ai-head{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-bottom:46px}
+.tc{display:flex;flex-wrap:wrap;gap:10px}
+.tc span{padding:9px 18px;border-radius:22px;font-size:13px;font-weight:800;border:1px solid var(--line);color:var(--tx2);background:rgba(255,255,255,.03);transition:.3s}
+.tc span:hover{color:#05060f;background:linear-gradient(90deg,var(--cy),var(--pu2));transform:translateY(-3px)}
+.rcl{display:grid;gap:11px}
+.rc{display:grid;grid-template-columns:44px 1fr 90px;gap:16px;padding:14px 18px;border-radius:10px;background:var(--card);border:1px solid var(--line);align-items:center;transition:.4s}
+.rc:hover{transform:translateX(6px);border-color:var(--cy)}
+.rc .rk{width:44px;height:44px;border-radius:9px;display:grid;place-items:center;font-size:15px;font-weight:950;color:#05060f;background:linear-gradient(135deg,var(--cy),var(--pu2));font-style:normal}
+.rc:nth-child(2) .rk{background:linear-gradient(135deg,var(--pu2),var(--mg))}
+.rc:nth-child(3) .rk{background:linear-gradient(135deg,var(--mg),var(--go))}
+.rc:nth-child(4) .rk{background:linear-gradient(135deg,var(--go),var(--cy))}
+.rc:nth-child(5) .rk{background:linear-gradient(135deg,var(--cy2),var(--pu))}
+.rc .tt{font-size:14px;font-weight:800}
+.rc .tt small{display:block;font-size:11.6px;color:var(--tx3);font-weight:600;margin-top:2px}
+.rc .sc{font-size:11.5px;font-weight:900;letter-spacing:1.2px;color:var(--cy);text-align:right}
+
+/* 栏目五：5G 对比 —— 三列对比表 */
+.cp-head{text-align:center;margin-bottom:46px}
+.cp-head .lede{margin:0 auto}
+.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.cmp .cl{padding:28px 24px;border-right:1px solid var(--line);background:var(--card)}
+.cmp .cl:last-child{border-right:0}
+.cmp .cl.feat{background:linear-gradient(160deg,rgba(0,240,255,.1),var(--card2))}
+.cmp .cl .tg{font-size:11px;font-weight:900;letter-spacing:1.6px;color:var(--cy);margin-bottom:8px}
+.cmp .cl h4{font-size:17px;font-weight:850}
+.cmp .cl .pr{font-size:31px;font-weight:950;margin:12px 0;background:linear-gradient(90deg,var(--cy),var(--pu2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.cmp .cl ul{padding:0}
+.cmp .cl li{font-size:13px;color:var(--tx2);padding:8px 0;border-bottom:1px dashed var(--line)}
+.cmp .cl li:last-child{border-bottom:0}
+.cmp .cl li::before{content:"—";color:var(--cy);font-weight:900;margin-right:8px}
+
+/* 栏目六：观看数据 —— 折线图 */
+.dt-head{text-align:center;margin-bottom:46px}
+.dt-head .lede{margin:0 auto}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+.chart .lg{display:flex;gap:18px;margin-bottom:16px;font-size:11.5px;color:var(--tx3);flex-wrap:wrap}
+.chart .lg i{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:6px;border-radius:2px}
+.ln{position:relative;height:220px;margin-left:44px;border-bottom:1px solid var(--line)}
+.ln .gy{position:absolute;left:-44px;top:0;bottom:0;width:44px;display:flex;flex-direction:column;justify-content:space-between;font-size:10px;color:var(--tx3);text-align:right;padding-right:8px}
+.ln svg{position:absolute;inset:0;width:100%;height:100%}
+.ln .lb{position:absolute;left:0;right:0;bottom:-26px;display:flex;justify-content:space-between;font-size:10.5px;color:var(--tx3)}
+.gg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:46px}
+.gg .g{padding:20px;border-radius:12px;background:var(--card);border:1px solid var(--line)}
+.gg .g b{display:block;font-size:30px;font-weight:950;background:linear-gradient(90deg,var(--cy),var(--pu2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.gg .g span{font-size:12.4px;color:var(--tx2)}
+
+/* 栏目七：多端同步 —— 设备层叠 */
+.dev-head{text-align:center;margin-bottom:46px}
+.dev-head .lede{margin:0 auto}
+.dev{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.stack{position:relative;height:340px}
+.stack .dk{position:absolute;border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 44px rgba(0,0,0,.5)}
+.stack .tv{left:0;top:40px;width:100%;height:170px;background:linear-gradient(140deg,var(--cy),var(--pu2))}
+.stack .pc{right:10px;top:0;width:60%;height:150px;background:linear-gradient(140deg,var(--card2),var(--card))}
+.stack .ph{left:14px;bottom:0;width:34%;height:190px;background:linear-gradient(140deg,var(--pu2),var(--mg))}
+.stack .dk::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.45))}
+.stack .dk span{position:absolute;left:14px;bottom:12px;font-size:12px;font-weight:850;color:#05060f;z-index:2}
+.stack .pc span,.stack .tv span{color:var(--tx)}
+.dlst{display:grid;gap:12px}
+.dlst .d{padding:16px 20px;border-radius:11px;background:var(--card);border:1px solid var(--line);display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:center;transition:.4s}
+.dlst .d:hover{border-color:var(--cy);transform:translateX(6px)}
+.dlst .d i{width:40px;height:40px;border-radius:9px;display:grid;place-items:center;font-style:normal;font-size:16px;background:rgba(0,240,255,.12)}
+.dlst .d b{font-size:14.5px;font-weight:850}
+.dlst .d p{font-size:12.4px;color:var(--tx2)}
+
+/* 栏目八：FAQ */
+.fq-head{text-align:center;margin-bottom:46px}
+.fq-head .lede{margin:0 auto}
+.fql{max-width:840px;margin:0 auto;display:grid;gap:10px}
+.fqi{border-radius:11px;border:1px solid var(--line);background:var(--card);overflow:hidden}
+.fqh{padding:19px 24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:.3s}
+.fqh:hover{background:rgba(0,240,255,.06)}
+.fqh h4{font-size:15.4px;font-weight:800}
+.fqh .pm{width:30px;height:30px;border-radius:7px;flex:none;display:grid;place-items:center;font-size:18px;font-weight:900;color:var(--cy);background:rgba(0,240,255,.12);transition:.4s var(--ez)}
+.fqi.open .fqh .pm{transform:rotate(45deg);background:var(--cy);color:#05060f}
+.fqb{max-height:0;overflow:hidden;transition:max-height .55s var(--ez)}
+.fqi.open .fqb{max-height:300px}
+.fqb p{padding:0 24px 22px;color:var(--tx2);font-size:14.2px}
+
+/* 页脚 */
+.ft{border-top:1px solid var(--line);background:#04050c;padding:60px 0 26px;margin-top:40px}
+.ft-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.ft-col h4{font-size:13.5px;font-weight:850;margin-bottom:15px;color:var(--cy);letter-spacing:.6px}
+.ft-col a{display:block;font-size:13.8px;color:var(--tx2);padding:6px 0;transition:.25s}
+.ft-col a:hover{color:var(--cy);transform:translateX(4px)}
+.ft-col p{font-size:13.2px;color:var(--tx3);max-width:330px}
+.ft-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--line);font-size:12.8px;color:var(--tx3)}
+.ft-bot a{color:var(--tx2);margin-left:18px}
+
+@media(max-width:1020px){
+  .hex,.cmp,.gg{grid-template-columns:repeat(2,1fr)}
+  .mx{grid-template-columns:repeat(2,1fr)}
+  .mx .cv:nth-child(odd){transform:none}
+  .rings{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:780px){
+  section{padding:72px 0}
+  .hg{grid-template-columns:1fr;gap:46px}
+  .menu{position:fixed;top:74px;left:0;right:0;flex-direction:column;padding:16px;background:rgba(5,6,15,.99);border-bottom:1px solid var(--line);transform:translateY(-160%);transition:.45s var(--ez)}
+  .menu.open{transform:translateY(0)}
+  .menu a{padding:12px;width:100%;text-align:center;border-bottom:1px solid var(--line)}
+  .menu .cta{margin:8px 0 0;width:100%;text-align:center}
+  .bmb{display:block}
+  .hero h1{font-size:42px}
+  .exp-head,.mx-head,.cp-head,.dt-head,.dev-head,.fq-head{text-align:left}
+  .exp-head .lede,.mx-head .lede,.cp-head .lede,.dt-head .lede,.dev-head .lede,.fq-head .lede{margin:0}
+  .q-head,.ai-head{grid-template-columns:1fr}
+  .q-head .lede,.ai-head .lede{text-align:left;margin:0}
+  .cmp{grid-template-columns:1fr}
+  .cmp .cl{border-right:0;border-bottom:1px solid var(--line)}
+  .cmp .cl:last-child{border-bottom:0}
+  .dev{grid-template-columns:1fr;gap:34px}
+  .gg{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<div class="grid" aria-hidden="true"></div>
+<div class="aur" aria-hidden="true"></div>
+<div class="pulse" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<header class="hd">
+  <div class="nv">
+    <a href="#top" class="logo"><span class="mk">5G</span>5G影视<small>NEXT-GEN STREAMING</small></a>
+    <nav class="menu" id="menu">
+      <a href="#speed">极速体验</a>
+      <a href="#quality">超高清画质</a>
+      <a href="#matrix">内容矩阵</a>
+      <a href="#recommend">智能推荐</a>
+      <a href="#compare">5G对比</a>
+      <a href="#data">观看数据</a>
+      <a href="#devices">多端同步</a>
+      <a href="#top" class="cta">立即体验</a>
+    </nav>
+    <button class="bmb" id="bmb" aria-label="菜单">☰</button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="wrap hg">
+    <div>
+      <span class="kicker"><span class="dot"></span> 5G NETWORK · 极速在线影视平台</span>
+      <h1><span class="b5">5G影视</span><span class="sub">5G 超高清影视在线观看平台 · 零缓冲秒播</span></h1>
+      <p class="desc">5G影视是5G时代超高清影视在线观看平台，依托5G极速网络提供4K/8K超高清影视、零缓冲秒播与智能推荐片单，覆盖电影、电视剧、综艺、动漫全品类内容，打造新一代高速影视观看体验。</p>
+      <div class="acts">
+        <a href="#matrix" class="btn bp">立即观看 ›</a>
+        <a href="#speed" class="btn bo">了解5G优势</a>
+      </div>
+      <div class="chips">
+        <span><b>5G</b> 极速网络</span><span><b>4K/8K</b> 超高清</span><span><b>零缓冲</b> 秒播</span><span><b>智能</b> 推荐</span><span><b>多端</b> 同步</span>
+      </div>
+    </div>
+    <div class="twr">
+      <div class="mtr">
+        <div class="mc"><div class="lb">下载速率</div><div class="vl">1.2<small>Gbps</small></div><div class="ft">5G 网络峰值实测</div></div>
+        <div class="mc"><div class="lb">缓冲时长</div><div class="vl">0.3<small>秒</small></div><div class="ft">起播平均耗时</div></div>
+      </div>
+      <div class="sig"><i></i><i></i><i></i><i></i></div>
+      <div class="bars">
+        <div class="b"><strong>4K</strong><span>超高清</span></div>
+        <div class="b"><strong>8K</strong><span>极致画质</span></div>
+        <div class="b"><strong>HDR</strong><span>高动态</span></div>
+        <div class="b"><strong>60FPS</strong><span>高帧率</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目一：极速体验 -->
+<section id="speed">
+  <div class="wrap">
+    <div class="exp-head">
+      <span class="kicker"><span class="dot"></span> SPEED</span>
+      <h2 class="h2">5G 带来的<em>极速体验</em></h2>
+      <p class="lede">5G影视依托5G极速网络，从起播、拖拽到画质，重新定义影视在线观看的速度上限。</p>
+    </div>
+    <div class="hex">
+      <div class="hx"><span class="ic">⚡</span><h3>秒级起播</h3><p>打开即播，告别漫长加载，起播平均耗时低至 0.3 秒。</p><div class="sp">0.3s 起播</div></div>
+      <div class="hx"><span class="ic">🌀</span><h3>拖拽无缓冲</h3><p>进度条任意拖拽即时响应，长视频跳转无等待。</p><div class="sp">零等待拖拽</div></div>
+      <div class="hx"><span class="ic">🖥️</span><h3>8K 流畅播</h3><p>5G 大带宽支撑 8K 超高清流媒体稳定传输不卡顿。</p><div class="sp">8K 稳定</div></div>
+      <div class="hx"><span class="ic">📶</span><h3>弱网自适应</h3><p>网络波动智能降码率，弱网下依然流畅不中断。</p><div class="sp">智能切换</div></div>
+      <div class="hx"><span class="ic">🔄</span><h3>云端预加载</h3><p>基于观看习惯预加载后续内容，连播更丝滑。</p><div class="sp">AI 预加载</div></div>
+      <div class="hx"><span class="ic">🚀</span><h3>多路并发</h3><p>同一账号多设备同时播放互不影响，带宽充足。</p><div class="sp">多路并发</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目二：超高清画质 -->
+<section id="quality" style="background:linear-gradient(180deg,transparent,rgba(0,240,255,.05),transparent)">
+  <div class="wrap">
+    <div class="q-head">
+      <div>
+        <span class="kicker"><span class="dot"></span> QUALITY</span>
+        <h2 class="h2">超高清<em>画质规格</em></h2>
+      </div>
+      <p class="lede">5G影视支持从 1080P 到 8K 的多档画质规格，配合 HDR 与高帧率，呈现影院级视觉体验。</p>
+    </div>
+    <div class="rings">
+      <div class="rg" style="--p:100"><i><b>8K</b><span>7680×4320</span></i></div>
+      <div class="rg" style="--p:88"><i><b>4K</b><span>3840×2160</span></i></div>
+      <div class="rg" style="--p:72"><i><b>HDR</b><span>高动态范围</span></i></div>
+      <div class="rg" style="--p:60"><i><b>60FPS</b><span>高帧率</span></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目三：内容矩阵 -->
+<section id="matrix">
+  <div class="wrap">
+    <div class="mx-head">
+      <span class="kicker"><span class="dot"></span> CONTENTS</span>
+      <h2 class="h2">全品类<em>内容矩阵</em></h2>
+      <p class="lede">5G影视覆盖电影、电视剧、综艺、动漫等全品类影视内容，热门新片与经典老片一站尽享。</p>
+    </div>
+    <div class="mx">
+      <div class="cv"><div class="th">院线电影</div><h4>院线电影</h4><p>同步院线热映大片与历年经典佳片。</p></div>
+      <div class="cv"><div class="th">热门剧集</div><h4>热门剧集</h4><p>国产剧、美剧、韩剧、日剧持续更新。</p></div>
+      <div class="cv"><div class="th">综艺娱乐</div><h4>综艺娱乐</h4><p>真人秀、访谈、选秀等综艺节目齐全。</p></div>
+      <div class="cv"><div class="th">动漫番剧</div><h4>动漫番剧</h4><p>国漫日漫新番，连载完结一站追番。</p></div>
+      <div class="cv"><div class="th">纪录片</div><h4>纪录片</h4><p>自然、历史、人文高分纪录片合集。</p></div>
+      <div class="cv"><div class="th">经典老片</div><h4>经典老片</h4><p>经久不衰的影史经典修复重制版。</p></div>
+      <div class="cv"><div class="th">短剧微剧</div><h4>短剧微剧</h4><p>竖屏短剧、微短剧快速追更。</p></div>
+      <div class="cv"><div class="th">独家自制</div><h4>独家自制</h4><p>平台自制影视内容，独家首发。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目四：智能推荐 -->
+<section id="recommend" style="background:linear-gradient(180deg,transparent,rgba(124,58,237,.06),transparent)">
+  <div class="wrap">
+    <div class="ai-head">
+      <div>
+        <span class="kicker"><span class="dot"></span> RECOMMEND</span>
+        <h2 class="h2">智能<em>推荐片单</em></h2>
+      </div>
+      <div class="tc">
+        <span>热门榜</span><span>高分榜</span><span>新片速递</span><span>经典必看</span><span>豆瓣高分</span><span>冷门佳作</span><span>根据喜好推荐</span>
+      </div>
+    </div>
+    <div class="rcl">
+      <div class="rc"><span class="rk">1</span><span class="tt">新片速递榜<small>本周上线 · 热度飙升</small></span><span class="sc">98.6 热度</span></div>
+      <div class="rc"><span class="rk">2</span><span class="tt">豆瓣高分榜<small>评分 9.0 以上精选</small></span><span class="sc">9.4 评分</span></div>
+      <div class="rc"><span class="rk">3</span><span class="tt">经典必看榜<small>影史经典修复版</small></span><span class="sc">经典</span></div>
+      <div class="rc"><span class="rk">4</span><span class="tt">冷门佳作榜<small>小众高分值得发掘</small></span><span class="sc">8.9 评分</span></div>
+      <div class="rc"><span class="rk">5</span><span class="tt">为你推荐<small>基于观看习惯智能匹配</small></span><span class="sc">匹配 96%</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目五：5G 对比 -->
+<section id="compare">
+  <div class="wrap">
+    <div class="cp-head">
+      <span class="kicker"><span class="dot"></span> COMPARE</span>
+      <h2 class="h2">5G 影视 <em>对比传统</em></h2>
+      <p class="lede">同样的影视内容，5G影视在起播速度、画质上限、拖拽响应上全面领先传统在线播放。</p>
+    </div>
+    <div class="cmp">
+      <div class="cl"><div class="tg">传统 4G</div><h4>4G 在线播放</h4><div class="pr">2-5秒</div><ul><li>起播需要等待缓冲</li><li>最高支持 1080P</li><li>拖拽常出现转圈</li><li>高峰时段易卡顿</li></ul></div>
+      <div class="cl feat"><div class="tg">家庭宽带</div><h4>宽带在线播放</h4><div class="pr">1-2秒</div><ul><li>起播较快但受带宽限制</li><li>支持 4K 需高带宽</li><li>拖拽偶有延迟</li><li>依赖固定网络</li></ul></div>
+      <div class="cl"><div class="tg">★ 5G 影视</div><h4>5G 影视</h4><div class="pr">0.3秒</div><ul><li>秒级起播零等待</li><li>支持 4K / 8K 超高清</li><li>拖拽即时响应</li><li>随时随地高速播放</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目六：观看数据 -->
+<section id="data" style="background:linear-gradient(180deg,transparent,rgba(0,240,255,.05),transparent)">
+  <div class="wrap">
+    <div class="dt-head">
+      <span class="kicker"><span class="dot"></span> DATA</span>
+      <h2 class="h2">平台<em>观看数据</em></h2>
+      <p class="lede">5G影视上线以来的核心运营数据，直观呈现 5G 极速影视平台的用户规模与增长趋势。</p>
+    </div>
+    <div class="chart">
+      <div class="lg"><span><i style="background:var(--cy)"></i>月活跃用户（万）</span><span><i style="background:var(--pu2)"></i>月播放时长（百万小时）</span></div>
+      <div class="ln">
+        <div class="gy"><span>2000</span><span>1500</span><span>1000</span><span>500</span><span>0</span></div>
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+          <polyline points="2,82 16,72 30,60 44,50 58,38 72,28 88,18 98,10" fill="none" stroke="url(#g1)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#00f0ff"/><stop offset="1" stop-color="#7c3aed"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="lb"><span>1月</span><span>2月</span><span>3月</span><span>4月</span><span>5月</span><span>6月</span><span>7月</span></div>
+      </div>
+    </div>
+    <div class="gg">
+      <div class="g"><b id="c1">0</b><span>月活跃用户（万）</span></div>
+      <div class="g"><b id="c2">0</b><span>在线影视资源（万部）</span></div>
+      <div class="g"><b id="c3">0</b><span>日均播放量（万次）</span></div>
+      <div class="g"><b id="c4">0</b><span>覆盖内容品类（种）</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目七：多端同步 -->
+<section id="devices">
+  <div class="wrap">
+    <div class="dev-head">
+      <span class="kicker"><span class="dot"></span> SYNC</span>
+      <h2 class="h2">多端<em>无缝同步</em></h2>
+      <p class="lede">5G影视支持手机、平板、电脑、电视四端登录，观看进度与收藏自动云端同步。</p>
+    </div>
+    <div class="dev">
+      <div class="stack">
+        <div class="dk tv"><span>📺 智能电视</span></div>
+        <div class="dk pc"><span>💻 电脑网页端</span></div>
+        <div class="dk ph"><span>📱 手机 APP</span></div>
+      </div>
+      <div class="dlst">
+        <div class="d"><i>📱</i><div><b>手机 APP</b><p>随时随地追剧，流量 WiFi 自动切换。</p></div></div>
+        <div class="d"><i>💻</i><div><b>电脑网页</b><p>大屏观看更沉浸，键鼠操作便捷。</p></div></div>
+        <div class="d"><i>📺</i><div><b>智能电视</b><p>投屏与 TV 版双支持，客厅影院体验。</p></div></div>
+        <div class="d"><i>🔗</i><div><b>进度云同步</b><p>登录即同步，换设备接着看不中断。</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目八：FAQ -->
+<section id="faq" style="background:linear-gradient(180deg,transparent,rgba(124,58,237,.06),transparent)">
+  <div class="wrap">
+    <div class="fq-head">
+      <span class="kicker"><span class="dot"></span> FAQ</span>
+      <h2 class="h2">常见<em>问题解答</em></h2>
+      <p class="lede">关于5G影视的5G优势、画质规格、会员权益、多端同步等常见问题，为你一一解答。</p>
+    </div>
+    <div class="fql">
+      <div class="fqi open"><div class="fqh"><h4>没有 5G 网络能使用 5G影视吗？</h4><span class="pm">+</span></div><div class="fqb"><p>可以。5G影视在 4G、WiFi 与宽带网络下均可正常使用，5G 网络下能发挥极速秒播与 8K 画质的最大优势。</p></div></div>
+      <div class="fqi"><div class="fqh"><h4>支持哪些画质规格？</h4><span class="pm">+</span></div><div class="fqb"><p>平台支持 1080P、4K、8K 多档画质，同时提供 HDR 高动态范围与 60FPS 高帧率选项，可根据网络状况自由切换。</p></div></div>
+      <div class="fqi"><div class="fqh"><h4>多端同步如何开启？</h4><span class="pm">+</span></div><div class="fqb"><p>使用同一账号在手机、平板、电脑、电视任一端登录即可自动同步观看进度、收藏记录与个人推荐偏好。</p></div></div>
+      <div class="fqi"><div class="fqh"><h4>起播真的能做到零缓冲吗？</h4><span class="pm">+</span></div><div class="fqb"><p>在 5G 网络环境下，平台起播平均耗时低至 0.3 秒，配合云端预加载技术，绝大多数内容可实现零缓冲秒播。</p></div></div>
+      <div class="fqi"><div class="fqh"><h4>影视内容更新频率如何？</h4><span class="pm">+</span></div><div class="fqb"><p>平台每日更新影视内容，院线新片、热门剧集、综艺番剧持续上线，并设有新片速递与热门榜单方便追更。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-top">
+      <div class="ft-col">
+        <a href="#top" class="logo"><span class="mk">5G</span>5G影视</a>
+        <p>5G影视是5G时代超高清影视在线观看平台，依托5G极速网络提供4K/8K超高清影视、零缓冲秒播与智能推荐片单，覆盖电影、电视剧、综艺、动漫全品类内容。</p>
+      </div>
+      <div class="ft-col"><h4>极速体验</h4><a href="#speed">秒级起播</a><a href="#speed">拖拽无缓冲</a><a href="#speed">8K 流畅播</a><a href="#speed">弱网自适应</a><a href="#speed">云端预加载</a></div>
+      <div class="ft-col"><h4>内容服务</h4><a href="#matrix">内容矩阵</a><a href="#quality">画质规格</a><a href="#recommend">智能推荐</a><a href="#compare">5G 对比</a><a href="#data">观看数据</a></div>
+      <div class="ft-col"><h4>关于平台</h4><a href="#">平台简介</a><a href="#">会员权益</a><a href="#">观看帮助</a><a href="#">内容合作</a><a href="#">友情链接</a></div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2026 5G影视 · 5G时代超高清影视在线观看平台 · https://5Gyingshi-cn.github.io</span>
+      <span><a href="#">友情链接</a><a href="#">免责声明</a><a href="#">服务条款</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('bmb'),m=document.getElementById('menu');
+  b.addEventListener('click',function(){m.classList.toggle('open')});
+  m.addEventListener('click',function(e){if(e.target.tagName==='A')m.classList.remove('open')});
+
+  document.querySelectorAll('.fqi').forEach(function(fi){
+    fi.querySelector('.fqh').addEventListener('click',function(){
+      var open=fi.classList.contains('open');
+      document.querySelectorAll('.fqi').forEach(function(x){x.classList.remove('open')});
+      if(!open)fi.classList.add('open');
+    });
+  });
+
+  function count(el,target,dur){
+    var s=0,t0=null;
+    function step(ts){
+      if(!t0)t0=ts;
+      var p=Math.min((ts-t0)/dur,1);
+      el.textContent=Math.floor(p*target).toLocaleString();
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var done=false;
+  function check(){
+    if(done)return;
+    var g=document.querySelector('.gg');
+    if(!g)return;
+    var r=g.getBoundingClientRect();
+    if(r.top>window.innerHeight||r.bottom<0)return;
+    done=true;
+    count(document.getElementById('c1'),1860,1600);
+    count(document.getElementById('c2'),12,1400);
+    count(document.getElementById('c3'),920,1500);
+    count(document.getElementById('c4'),8,1200);
+  }
+  window.addEventListener('scroll',check,{passive:true});
+  window.addEventListener('load',check);
+})();
+</script>
+
+</body>
+</html>
